@@ -2,6 +2,13 @@ extern crate prost;
 #[macro_use]
 extern crate prost_derive;
 
+#[cfg(feature = "serde-derive")]
+#[macro_use]
+extern crate serde_derive;
+
+#[cfg(feature = "serde-derive")]
+extern crate serde;
+
 // TODO(bbannier): Add some documentation for this module.
 
 // We disable generation of documentation for imported files since the

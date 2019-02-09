@@ -68,10 +68,9 @@ fn main() {
 
     let mut prost_build = prost_build::Config::new();
 
-    // TODO(bbannier): Set up a feature flag to set up serde attribute injection.
-    //
-    //     prost_build.type_attribute(".", "#[derive(Serialize)]");
-    //     prost_build.type_attribute(".", "#[serde(rename_all = \"camelCase\")]");
+    if cfg!(feature = "serde-derive") {
+        prost_build.type_attribute(".", "#[derive(Serialize, Deserialize)]");
+    }
 
     prost_build
         .compile_protos(&inputs, &[&include_dir])
