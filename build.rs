@@ -9,11 +9,11 @@ use tar::Archive;
 
 fn main() {
     let out_dir = std::env::var("OUT_DIR").unwrap();
-    let include_dir = std::path::Path::new(&out_dir).join("mesos-1.7.1/include");
+    let include_dir = std::path::Path::new(&out_dir).join("mesos-1.7.2/include");
 
     if !include_dir.exists() {
         let body =
-            reqwest::get("http://www.apache.org/dist/mesos/1.7.1/mesos-1.7.1.tar.gz").unwrap();
+            reqwest::get("http://www.apache.org/dist/mesos/1.7.2/mesos-1.7.2.tar.gz").unwrap();
 
         let tar = GzDecoder::new(body);
         let mut archive = Archive::new(tar);
